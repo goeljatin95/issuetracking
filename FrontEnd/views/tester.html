@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  
+ 
+  
+</head>
+</head>
+
+   
+<body>
+    <div ng-controller='ctrl3'> 
+       <div ng-show='flag'>
+        <p>ASSIGNED:-<span ng-model='assigned'>{{assigned}}</span></p>
+               
+    <table style="width: 100%" class="table table-bordered" >
+           <tr>
+            <thead class="thead-dark ">
+           
+            <th style="text-align: center">DESCRIPTION OF ISSUE</th>   
+        </thead>
+        </tr>
+        <tr >
+           
+          
+            
+            <td> 
+                <form name='f1'> 
+                
+                <label for="issue">ISSUE</label>
+             <p> <div class="form-group">
+               <input required type="text"  class="form-control"  ng-model='issue' name='isu'>
+            </div>
+        </p>
+            <p>
+                    <p>DESCRIPTION</p>
+              
+                    <textarea  cols="90" rows="10" required ng-model='description' ></textarea>
+            </p>
+            <p>
+                    ASSIGN TO <select ng-model='assignTo' required ng-options=" name for name in assignto" >
+                            <option value="">Select</option>
+                         
+
+
+
+                    </select>
+            </p>
+            <br>
+            <p>
+                
+               
+                    
+                              
+                       <input type="file" required ngf-select ng-model="file" 
+                       name="file" accept="image/*" ngf-max-size="2MB" name='image'>
+                </input>
+            
+               
+                <img ngf-thumbnail="file" ngf-size="{width: 40, height: 40, quality: 1.0}">
+                      
+    
+            </p>
+            <br>
+            
+            <br>
+           
+            <p>
+                        Status of Issue 
+                        <input list="Severity" type="text" required ng-model='severity' placeholder="select severity" >
+                        <datalist  required name='Severity' id='Severity'>
+                               <option value="">Select</option>
+                                <option value="low"></option>
+                               <option value="high"></option>
+                               <option value="severe"></option>
+                        </datalist>
+                    </input>
+          
+            </p>
+            
+          
+        <p>
+           TimeAlloted:-   <input type="number" required style="width:5%" ng-model='timeAlloted' >hrs
+        </p>
+        <p>
+            <button ng-click="addIssue(file)" ng-disabled=f1.$invalid>ADD ISSUE</button>
+    </p>
+</form>           
+</td>
+
+  
+                     
+     
+                    
+        
+        </table>
+       </div>
+        <div ng-hide='flag' >
+            <button style="position: absolute; left: 80%; top:12px"  ng-click='change()'>Sumbit a Bug</button>
+        <br>
+        <br>
+        <table class="table table-bordered" >
+            <thead class="thead-dark">
+            <th>issue</th>
+             <th>AllotedTo</th>
+             <th>TimeAlloted</th>
+             <th>AllotedOn</th>
+             <th>Status</th>
+           </thead>
+         <tr ng-repeat='issues in list'>
+          
+           <td>{{issues.issue}}</td>
+          <td>{{issues.AllotedTo}}</td>
+          <td>{{issues.TimeAlloted}}</td>
+          <td>Date:-{{issues.AllotedOn|date: 'dd/MM/yyyy'}} Time:-{{issues.AllotedOn|date: 'HH:mm:ss'}}</td>
+          <td>{{issues.Status}} </td>
+          </tr>
+
+
+        </table>
+       
+      </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+
+<body>
+   <div ng-controller='ctrl4'  >
+   <a ng-href="/" style="size: 40px">signout</a>
+    <div ng-hide='flag' >
+    <h1 style="text-align: center" >ASSIGNED BUGS</h1>
+         
+        <table style="width: 100%" class="table">
+        <thead class="thead-dark">
+           <tr>
+            <th>Bug</th>
+            <th>Report To</th>
+            <th>Severity</th>
+            <th>TimeAlloted(hrs)</th>
+            <th>AllotedOn</th>
+            <th>Currentstatus</th>
+            <th>NewStatus</th>
+   
+        
+           
+       
+            <tr   ng-repeat="developers in list" class=textselection  >
+             
+                <td class=".ellipsis"  ng-click=func(developers)>{{developers.issue|limitTo:10}}....</td>
+                <td  ng-click=func(developers) >{{developers.ReportTo}}</td>
+                <td  ng-click=func(developers) >{{developers.Severity}}</td>
+                <td   ng-click=func(developers)>{{developers.TimeAlloted}}</td>
+                <td ng-click=func(developers) >Date:-{{developers.AllotedOn| date: 'dd/MM/yyyy'}}  Time:-{{developers.AllotedOn| date: 'HH:mm:ss'}}</td>
+                <td  ng-click=func(developers) >
+                   
+                            {{developers.Status}}
+
+              
+                
+                    
+                  
+                   
+                
+                </td>
+                <td>
+                    <select ng-model='status' ng-change='statusChange(developers,status)'>
+                        <option value="">Select</option>
+                        <option value="Not Resolved" >Not Resolved</option>
+                        <option value="solved" >solved</option>
+                        <option value="NAB">NAB</option>
+                        <option value="TBD" >TBD</option>
+                    </select>
+                </td>
+        </table>
+        </div>
+        <div ng-show='flag' style="text-align: center" >
+           <div  class="box">          
+                 <h1>Description of bug</h1>
+          <p ng-model='descr'>
+              {{descr}}
+          </p>
+         
+        </div>
+        <br>
+        <button ng-click=func2()>back</button>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div ng-controller='ctrl1' style="text-align: center">
+         <div >
+        <form name='f1' ng-sumbit='login()' class="form"> 
+       <h1>Login</h1>
+         
+
+       <br>
+        <span>username<span style='color: red'>*</span></span>     <input class="input" type="text" required placeholder="type username here" ng-model='userid' name='username' ng-change="login(f1.$valid)" ></input>
+        <span  ng-if="f1.username.$touched && f1.username.$invalid && f1.username.$error['required']"></span>
+        <br>
+        <br>
+    
+        <span>password</span><span style='color: red'>*</span>  <input class="input" type="password" required placeholder="type password here" type="password" name='pwd' ng-model='password'></input>
+       
+        <br>
+        <br>
+      
+      
+          Role<span style='color: red' >*</span>
+       <select ng-model='role' required   size="1" >
+      
+           <option value="">you are</option> 
+           <option value="admin">admin</option>
+            <option value="developer">developer</option>
+            <option value="tester">tester</option>
+           
+            
+         </select>
+      
+         <br>
+         <br>
+           
+       <button ng-click='sumbit()' type="submit" ng-disabled='f1.$invalid'> login</button>
+        <button type="button" ng-click=register()>Register</button>
+       
+   
+   
+       </form>
+    </div >
+        
+       
+       </div>
+
+</body>
+</html>
